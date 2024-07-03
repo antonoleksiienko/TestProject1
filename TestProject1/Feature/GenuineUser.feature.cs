@@ -103,6 +103,12 @@ this.ScenarioInitialize(scenarioInfo);
 #line 11
  testRunner.Then("User checks that login page is opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
+#line 12
+ testRunner.When("User logs in with username \'some.user@mail.box\' and password \'qwerty123\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 13
+ testRunner.Then("User checks that he is logged in successfully and page \'SomePage\' is opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
             }
             this.ScenarioCleanup();
         }
