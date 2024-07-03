@@ -22,44 +22,44 @@ namespace TestProject2.StepDefinition
         [When(@"user sends GET request to take all failed login")]
         public void GetAllFailedLogin()
         {
-            _response = _apiService.GetRequest();
+            _response = _apiService.GetLoginFailTotalRequest();
         }
 
         [When(@"user sends GET request to take all failed login with limit '(-?\d+)'")]
         public void GetAllFailedLoginWithLimit(int fetchLimit)
         {
-            _response = _apiService.GetRequest(fetchLimit: fetchLimit);
+            _response = _apiService.GetLoginFailTotalRequest(fetchLimit: fetchLimit);
         }
 
         [Given(@"user sends GET request to take failed login for user with '(.*)' name")]
         [When(@"user sends GET request to take failed login for user with '(.*)' name")]
         public void GetFailedLoginForUserWithName(string userName)
         {
-            _response = _apiService.GetRequest(userName);
+            _response = _apiService.GetLoginFailTotalRequest(userName);
         }
 
         [When(@"user sends GET request to take failed login for user with name '(.*)' and limit '(-?\d+)'")]
         public void GetFailedLoginForUserWithNameAndLimit(string userName, int fetchLimit)
         {
-            _response = _apiService.GetRequest(userName, fetchLimit: fetchLimit);
+            _response = _apiService.GetLoginFailTotalRequest(userName, fetchLimit: fetchLimit);
         }
 
         [When(@"user sends GET request to take all users with number of failed logins above '(-?\d+)' value")]
         public void GetFailedLoginForUserWithFailCount(int failCount)
         {
-            _response = _apiService.GetRequest(failCount:failCount);
+            _response = _apiService.GetLoginFailTotalRequest(failCount:failCount);
         }
 
         [When(@"user sends GET request to take all users with number of failed logins above value '(-?\d+)' and limit '(-?\d+)'")]
         public void GetFailedLoginForUserWithFailCountAndLimit(int failCount, int fetchLimit)
         {
-            _response = _apiService.GetRequest(failCount: failCount, fetchLimit:fetchLimit);
+            _response = _apiService.GetLoginFailTotalRequest(failCount: failCount, fetchLimit:fetchLimit);
         }
         
         [When(@"user sends PUT request to reset failed login count for user with name '(.*)'")]
         public void PutResetFailedLoginCount(string userName)
         {
-            _response = _apiService.PutRequest(userName);
+            _response = _apiService.ResetLoginFailTotalRequest(userName);
         }
 
         [Then(@"user checks that response code is '(.*)'")]

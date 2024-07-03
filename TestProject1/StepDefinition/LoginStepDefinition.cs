@@ -44,9 +44,7 @@ namespace TestProject1.StepDefinition
         [Then(@"User checks that login page is opened")]
         public void UserChecksLoginPageIsOpened()
         {
-            var test = LoginPageUrl;
-            _driver.FindElement(By.XPath("//a[@aria-label='Gmail ']")).Click();
-            //Assert.That(Driver.Url, Is.EqualTo(LoginPageUrl));
+            Assert.That(_driver.Url, Is.EqualTo(LoginPageUrl));
         }
 
         [Then(@"User checks that he is logged in successfully and page '(.*)' is opened")]

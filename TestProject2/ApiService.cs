@@ -1,5 +1,4 @@
-﻿using System.Text.Json;
-using RestSharp;
+﻿using RestSharp;
 
 namespace TestProject2
 {
@@ -12,7 +11,7 @@ namespace TestProject2
             _restClient = new RestClient(config.Url);
         }
 
-        public RestResponse GetRequest(string? userName = null, int? failCount = null, int? fetchLimit = null, string? token = null)
+        public RestResponse GetLoginFailTotalRequest(string? userName = null, int? failCount = null, int? fetchLimit = null, string? token = null)
         {
             RestRequest request = new("/loginfailtotal", Method.Get);
 
@@ -40,7 +39,7 @@ namespace TestProject2
             return restResponse;
         }
 
-        public RestResponse PutRequest(string userName, string? token = null)
+        public RestResponse ResetLoginFailTotalRequest(string userName, string? token = null)
         {
             RestRequest request = new("/resetloginfailtotal", Method.Put);
 
@@ -52,11 +51,6 @@ namespace TestProject2
             request.AddQueryParameter("Username", userName);
             RestResponse restResponse = _restClient.Execute(request);
             return restResponse;
-        }
-
-        public T DeserializeResponse<T>(RestResponse response)
-        {
-            return JsonSerializer.Deserialize<T>(response.Content!)!;
         }
     }
 }
