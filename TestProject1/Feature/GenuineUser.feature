@@ -9,6 +9,6 @@ Scenario: GenuineUser
 	Given valid user credentials are already registered
 	And User opens 'Main' page
 	Then User checks that login page is opened
-	#When User logs in with username 'some.user@mail.box' and password 'qwerty123'
-	#Then User checks that he is logged in successfully and page 'SomePage' is opened
+	When User logs in with username 'some.user@mail.box' and password 'qwerty123'
+	Then User checks that he is logged in successfully and page 'SomePage' is opened
 
