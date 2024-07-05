@@ -6,16 +6,18 @@ using TestProject1.Pages;
 namespace TestProject1.StepDefinition
 {
     [Binding]
-    public class LoginStepDefinition : BaseStepDefinition
+    public class LoginStepDefinition
     {
         private readonly IWebDriver _driver;
+        private readonly Config _config;
         private LoginPage _loginPage;
 
-        private static string LoginPageUrl => $"{Config.Url}/login";
+        private string LoginPageUrl => $"{_config.Url}/login";
 
-        public LoginStepDefinition(IWebDriver driver)
+        public LoginStepDefinition(IWebDriver driver, Config config)
         {
             _driver = driver;
+            _config = config;
         }
 
         [BeforeScenario]

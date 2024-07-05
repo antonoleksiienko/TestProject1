@@ -4,13 +4,15 @@ using TechTalk.SpecFlow;
 namespace TestProject1.StepDefinition
 {
     [Binding]
-    public class NavigationStepDefinition : BaseStepDefinition
+    public class NavigationStepDefinition
     {
         private readonly IWebDriver _driver;
+        private readonly Config _config;
 
-        public NavigationStepDefinition(IWebDriver driver)
+        public NavigationStepDefinition(IWebDriver driver, Config config)
         {
             _driver = driver;
+            _config = config;
         }
 
         [Given(@"User opens '(.*)' page")]
@@ -21,13 +23,13 @@ namespace TestProject1.StepDefinition
             _driver.Navigate().GoToUrl(url);
         }
 
-        private static string GetPageUrl(string pageName)
+        private string GetPageUrl(string pageName)
         {
             return pageName switch
             {
-                "Main" => $"{Config.Url}",
-                "Login" => $"{Config.Url}/login",
-                "SomePage" => $"{Config.Url}/somePage",
+                "Main" => $"{_config.Url}",
+                "Login" => $"{_config.Url}/login",
+                "SomePage" => $"{_config.Url}/somePage",
                 _ => throw new Exception($"Page with name {pageName} not found")
             };
         }
